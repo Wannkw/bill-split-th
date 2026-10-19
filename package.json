@@ -1,0 +1,9 @@
+{
+  "name": "bill-split-th",
+  "version": "1.0.0",
+  "description": "Split a Thai restaurant bill (service charge + VAT) and get a PromptPay QR",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bill Split TH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Bill Split TH</h1>
+      <p class="sub">Add the items, tick who had what. Service charge and VAT are added the Thai way, and you get a PromptPay QR for each person.</p>
+    </header>
+
+    <section>
+      <h2>1. Who was there</h2>
+      <form id="person-form" class="row">
+        <input id="person-name" placeholder="Name, e.g. Mint" autocomplete="off">
+        <button>Add</button>
+      </form>
+      <ul id="people" class="chips"></ul>
+    </section>
+
+    <section>
+      <h2>2. What did you order</h2>
+      <form id="item-form" class="row">
+        <input id="item-name" placeholder="Item" autocomplete="off">
+        <input id="item-price" type="number" step="0.01" min="0" placeholder="Price" inputmode="decimal">
+        <button>Add</button>
+      </form>
+      <p class="hint">Nobody ticked = everyone shares it (ice, rice, water...)</p>
+      <div id="items"></div>
+    </section>
+
+    <section>
+      <h2>3. Service charge / VAT</h2>
+      <div class="settings">
+        <label>Service charge <input id="service" type="number" min="0" value="10"> %</label>
+        <label>VAT <input id="vat" type="number" min="0" value="7"> %</label>
+        <label class="check"><input id="vat-included" type="checkbox"> Menu prices already include VAT</label>
+        <label>Discount <input id="discount" type="number" min="0" step="0.01" value="0"> THB</label>
+      </div>
+    </section>
+
+    <section class="result">
+      <h2>Summary <span id="total"></span></h2>
+      <table id="summary"></table>
+    </section>
+
+    <section>
+      <h2>4. PromptPay QR (for whoever paid)</h2>
+      <div class="row">
+        <input id="pp-id" placeholder="Phone number or national ID" inputmode="numeric">
+      </div>
+      <p class="hint">Click a name in the summary to make a QR for that person's amount.</p>
+      <div id="qr"></div>
+    </section>
+
+    <footer>
+      <button id="reset" class="link">Clear everything</button>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
